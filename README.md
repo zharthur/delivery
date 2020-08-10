@@ -1,4 +1,8 @@
-# shop
+# 项目简介
+
+本项目是一个基于Vue的仿美团外卖App的练习项目。
+
+使用Vue+NodeJS+Express+MongoDB开发 。
 
 ## Project setup
 ```

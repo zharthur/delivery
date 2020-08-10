@@ -1,32 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
+    <FooterGuide v-if="$route.meta.isShowFooter" />
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script type="text/ecmascript-6">
+import FooterGuide from "./components/FooterGuide/FooterGuide";
+export default {
+  name: "App",
+  data() {
+    return {
+      msg: "App Component"
+    };
+  },
 
-#nav {
-  padding: 30px;
-}
+  async mounted() {
+    // 分发actoin, 从后台获取数据到state中
+    this.$store.dispatch("getAddress");
+    this.$store.dispatch("autoLogin");
+  },
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  components: {
+    FooterGuide
+  }
+};
+</script>
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style lang="stylus" rel="stylesheet/stylus" scoped></style>
